@@ -7,14 +7,13 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "hardhat/console.sol";
 
-// we need to import the helper function from the Base64 contract
+
 import { Base64 } from "./libraries/Base64.sol";
 
 contract MyEpicNFT is ERC721URIStorage {
   using Counters for Counters.Counter;
   Counters.Counter private _tokenIds;
   Counters.Counter public _tokenTotal;
-  // uint totalMinted;
 
   string svgPartOne = "<svg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMinYMin meet' viewBox='0 0 350 350'><style>.base { fill: white; font-family: sans-serif; font-size: 18px; }</style><rect width='100%' height='100%' fill='";
   string svgPartTwo = "'/><text x='50%' y='50%' class='base' dominant-baseline='middle' text-anchor='middle'>";
@@ -27,7 +26,7 @@ contract MyEpicNFT is ERC721URIStorage {
 
   event NewEpicNFTMinted(address sender, uint256 tokenId);
 
-  // We need to pass the name of our NFTs token and it's symbol.
+  
   constructor() ERC721 ("SquareNFT", "SQUARE") {
     console.log("This is my NFT contract");
   }
@@ -64,7 +63,7 @@ contract MyEpicNFT is ERC721URIStorage {
     require(_tokenIds.current() <= 50);
 
     uint256 newItemId = _tokenIds.current();
-    // uint256 totalMinted = _tokenTotal.current();
+   
 
     string memory first = pickRandomFirstWord(newItemId);
     string memory second = pickRandomSecondWord(newItemId);
@@ -96,21 +95,19 @@ contract MyEpicNFT is ERC721URIStorage {
     console.log(finalTokenUri);
     console.log("--------------------\n");
 
-    // totalMinted += 1;
-
-    // actually mint the NFT to the sender using msg.sender.
+   
     _safeMint(msg.sender, newItemId);
 
-    // set the NFTs data
+   
     _setTokenURI(newItemId, finalTokenUri);
 
-    // Increment the counter for when the next NFT is minted
+    
     _tokenIds.increment();
 
-    // Increment the total when the next is minted
+    
     _tokenTotal.increment();
 
-    // console.log to see who has minted and when it was minted
+    
     console.log("An NFT w/ ID %s has been minted to %s", newItemId, msg.sender);
     console.log(_tokenTotal.current());
 
