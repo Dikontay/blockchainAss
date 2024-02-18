@@ -1,14 +1,11 @@
 import { useState, useEffect } from 'react'
 import { ethers } from 'ethers'
 import Modal from './components/Modal'
-import twitterLogo from './assets/svgviewer-output.svg'
 import openseaLogo from './assets/opensea-logo.png'
 import myEpicNft from './utils/MyEpicNFT.json'
 import './App.css';
 
-const TWITTER_HANDLE = 'JacobZavita';
-const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
-const OPENSEA_LINK = 'https://testnets.opensea.io/collection/squarenft-exc8c2isgt';
+const OPENSEA_LINK = 'https://testnets.opensea.io/collection/qgnft';
 const TOTAL_MINT_COUNT = 50;
 
 const CONTRACT_ADDRESS = "0xC927f6b7DAc4B660349D596d219f6eA7B7C01B57";
@@ -151,7 +148,7 @@ const App = () => {
       }
       <div className="container">
         <div className="header-container">
-          <p className="header gradient-text">Jacob's NFT Collection</p>
+          <p className="header gradient-text">AITU's NFT Collection</p>
           <a
             className="opensea-button"
             href={OPENSEA_LINK}
@@ -167,15 +164,7 @@ const App = () => {
           </p>
           {currentAccount === "" ? renderNotConnectedContainer() : renderMintUI()}
         </div>
-        <div className="footer-container">
-          <img alt="Twitter Logo" className="twitter-logo" src={twitterLogo} />
-          <a
-            className="footer-text"
-            href={TWITTER_LINK}
-            target="_blank"
-            rel="noreferrer"
-          >{`built with @_buildspace by @${TWITTER_HANDLE}`}</a>
-        </div>
+        
       </div>
       <div className="circle1"></div>
       <div className="circle2"></div>
